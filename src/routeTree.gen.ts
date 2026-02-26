@@ -9,38 +9,91 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BackupRouteImport } from './routes/backup'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as demoGradientsRouteImport } from './routes/(demo)/gradients'
+import { Route as demoDashboardRouteImport } from './routes/(demo)/dashboard'
+import { Route as demoComponentsRouteImport } from './routes/(demo)/components'
 
+const BackupRoute = BackupRouteImport.update({
+  id: '/backup',
+  path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const demoGradientsRoute = demoGradientsRouteImport.update({
+  id: '/(demo)/gradients',
+  path: '/gradients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const demoDashboardRoute = demoDashboardRouteImport.update({
+  id: '/(demo)/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const demoComponentsRoute = demoComponentsRouteImport.update({
+  id: '/(demo)/components',
+  path: '/components',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/components': typeof demoComponentsRoute
+  '/dashboard': typeof demoDashboardRoute
+  '/gradients': typeof demoGradientsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/components': typeof demoComponentsRoute
+  '/dashboard': typeof demoDashboardRoute
+  '/gradients': typeof demoGradientsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/(demo)/components': typeof demoComponentsRoute
+  '/(demo)/dashboard': typeof demoDashboardRoute
+  '/(demo)/gradients': typeof demoGradientsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/backup' | '/components' | '/dashboard' | '/gradients'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/backup' | '/components' | '/dashboard' | '/gradients'
+  id:
+    | '__root__'
+    | '/'
+    | '/backup'
+    | '/(demo)/components'
+    | '/(demo)/dashboard'
+    | '/(demo)/gradients'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BackupRoute: typeof BackupRoute
+  demoComponentsRoute: typeof demoComponentsRoute
+  demoDashboardRoute: typeof demoDashboardRoute
+  demoGradientsRoute: typeof demoGradientsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/backup': {
+      id: '/backup'
+      path: '/backup'
+      fullPath: '/backup'
+      preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +101,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(demo)/gradients': {
+      id: '/(demo)/gradients'
+      path: '/gradients'
+      fullPath: '/gradients'
+      preLoaderRoute: typeof demoGradientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(demo)/dashboard': {
+      id: '/(demo)/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof demoDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(demo)/components': {
+      id: '/(demo)/components'
+      path: '/components'
+      fullPath: '/components'
+      preLoaderRoute: typeof demoComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BackupRoute: BackupRoute,
+  demoComponentsRoute: demoComponentsRoute,
+  demoDashboardRoute: demoDashboardRoute,
+  demoGradientsRoute: demoGradientsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
