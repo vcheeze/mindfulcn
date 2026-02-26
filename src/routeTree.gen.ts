@@ -9,17 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as BackupRouteImport } from './routes/backup'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as demoGradientsRouteImport } from './routes/(demo)/gradients'
 import { Route as demoDashboardRouteImport } from './routes/(demo)/dashboard'
 import { Route as demoComponentsRouteImport } from './routes/(demo)/components'
 
-const BackupRoute = BackupRouteImport.update({
-  id: '/backup',
-  path: '/backup',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,14 +37,12 @@ const demoComponentsRoute = demoComponentsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/backup': typeof BackupRoute
   '/components': typeof demoComponentsRoute
   '/dashboard': typeof demoDashboardRoute
   '/gradients': typeof demoGradientsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/backup': typeof BackupRoute
   '/components': typeof demoComponentsRoute
   '/dashboard': typeof demoDashboardRoute
   '/gradients': typeof demoGradientsRoute
@@ -58,20 +50,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/backup': typeof BackupRoute
   '/(demo)/components': typeof demoComponentsRoute
   '/(demo)/dashboard': typeof demoDashboardRoute
   '/(demo)/gradients': typeof demoGradientsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/backup' | '/components' | '/dashboard' | '/gradients'
+  fullPaths: '/' | '/components' | '/dashboard' | '/gradients'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/backup' | '/components' | '/dashboard' | '/gradients'
+  to: '/' | '/components' | '/dashboard' | '/gradients'
   id:
     | '__root__'
     | '/'
-    | '/backup'
     | '/(demo)/components'
     | '/(demo)/dashboard'
     | '/(demo)/gradients'
@@ -79,7 +69,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BackupRoute: typeof BackupRoute
   demoComponentsRoute: typeof demoComponentsRoute
   demoDashboardRoute: typeof demoDashboardRoute
   demoGradientsRoute: typeof demoGradientsRoute
@@ -87,13 +76,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/backup': {
-      id: '/backup'
-      path: '/backup'
-      fullPath: '/backup'
-      preLoaderRoute: typeof BackupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -127,7 +109,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BackupRoute: BackupRoute,
   demoComponentsRoute: demoComponentsRoute,
   demoDashboardRoute: demoDashboardRoute,
   demoGradientsRoute: demoGradientsRoute,

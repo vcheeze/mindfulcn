@@ -80,7 +80,7 @@ export function HowItWorks() {
                   navigate({ to: '.', search: { theme: value } })
                 }}
               >
-                {themes.slice(0, 3).map((theme) => (
+                {themes.slice(1, 4).map((theme) => (
                   <FieldLabel key={theme.id} htmlFor={`theme-${theme.id}`}>
                     <Field orientation="horizontal">
                       <FieldContent className="hover:opacity-80 hover:cursor-pointer">

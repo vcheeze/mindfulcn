@@ -17,8 +17,6 @@ const themeModules = import.meta.glob('../themes/*.css', {
   import: 'default',
 })
 
-console.log('themeModules :>> ', themeModules)
-
 export const CopyDialog = () => {
   const routerState = useRouterState()
   const [css, setCss] = useState<string | null>(null)

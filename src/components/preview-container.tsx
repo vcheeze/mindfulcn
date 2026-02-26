@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
-import { Loading } from "@/components/loading";
+import { Suspense } from 'react'
+import { Loading } from '@/components/loading'
+import { Skeleton } from '@/components/ui/skeleton'
+import { cn } from '@/lib/utils'
 
 const LoadingSkeleton = () => (
   <div className="absolute inset-0 flex flex-col">
@@ -13,22 +13,22 @@ const LoadingSkeleton = () => (
       <Loading />
     </div>
   </div>
-);
+)
 
 const PreviewContainer = ({
   children,
   className,
 }: {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }) => {
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn('space-y-6', className)}>
       <div className="@container mt-0 h-full w-full space-y-6">
         <Suspense fallback={<LoadingSkeleton />}>{children}</Suspense>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PreviewContainer;
+export default PreviewContainer

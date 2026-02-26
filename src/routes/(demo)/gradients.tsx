@@ -11,7 +11,6 @@ function RouteComponent() {
   const routerState = useRouterState()
   const themeId = routerState.location.search.theme ?? themes[0].id
   const theme = themes.find((t) => t.id === themeId) || themes[0]
-  console.log('theme :>> ', theme)
 
   return (
     <div className="container mx-auto p-8 flex items-center justify-center gap-4 h-[calc(100vh-65px)] max-sm:flex-col">

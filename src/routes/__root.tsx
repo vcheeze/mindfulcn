@@ -9,7 +9,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { useState } from 'react'
 import z from 'zod'
 import { Header } from '@/components/header'
-import { ModeProvider } from '@/components/mode-provider'
+import { ModeProvider, useTheme } from '@/components/mode-provider'
 import { ThemeSelector } from '@/components/theme-selector'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import {
@@ -54,45 +54,50 @@ export const Route = createRootRoute({
     middlewares: [retainSearchParams(['theme'])],
   },
   loader: async ({ location }) => {
-    const theme = (location.search as { theme?: string }).theme // TODO how to get the proper type here?
-    return { htmlClass: theme ? `theme-${theme}` : 'theme-default' }
+    const { theme, mode } = location.search as { theme?: string; mode?: string } // TODO how to get the proper type here?
+    return {
+      themeClass: theme ? `theme-${theme}` : 'theme-default',
+      modeClass: mode ?? 'light',
+    }
   },
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { htmlClass } = Route.useLoaderData()
+  const { themeClass, modeClass } = Route.useLoaderData()
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev)
   }
 
   return (
-    // TODO adding htmlClass like this right now removes the `dark` class from html when using `navigate` function. How do I preserve this?
-    <html lang="en" className={`font-mono transition-colors ${htmlClass}`}>
+    // TODO adding themeClass like this right now removes the `dark` class from html when using `navigate` function. How do I preserve this?
+    <html
+      lang="en"
+      className={`font-mono transition-colors ${themeClass} ${modeClass}`}
+    >
       <head>
         <HeadContent />
       </head>
       <body>
-        <ModeProvider>
-          <TooltipProvider>
-            <SidebarProvider open={isSidebarOpen}>
-              <SidebarInset>
-                <ScrollArea className="h-screen">
-                  <Header onSelectTheme={toggleSidebar} />
-                  <main>{children}</main>
-                </ScrollArea>
-              </SidebarInset>
-              <Sidebar side="right">
-                <SidebarHeader>
-                  <div className="px-2 pt-2">Select Theme</div>
-                </SidebarHeader>
-                <SidebarContent className="p-4">
-                  <ThemeSelector />
-                </SidebarContent>
-              </Sidebar>
-            </SidebarProvider>
-          </TooltipProvider>
-        </ModeProvider>
+        <TooltipProvider>
+          <SidebarProvider open={isSidebarOpen}>
+            <SidebarInset>
+              <ScrollArea className="h-screen">
+                <Header onSelectTheme={toggleSidebar} />
+                <main>{children}</main>
+              </ScrollArea>
+            </SidebarInset>
+            <Sidebar side="right">
+              <SidebarHeader>
+                <div className="px-2 pt-2">Select Theme</div>
+              </SidebarHeader>
+              <SidebarContent className="p-4">
+                <ThemeSelector />
+              </SidebarContent>
+            </Sidebar>
+          </SidebarProvider>
+        </TooltipProvider>
         <TanStackDevtools
           config={{
             position: 'bottom-right',

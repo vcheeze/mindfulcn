@@ -18,17 +18,23 @@ export function ThemeSelector() {
     <RadioGroup
       value={routerState.location.search.theme ?? 'default'}
       onValueChange={(value: string) => {
-        document.documentElement.classList.forEach((className) => {
-          if (className.startsWith('theme-')) {
-            document.documentElement.classList.remove(className)
-          }
-        })
-        document.documentElement.classList.add(`theme-${value}`)
+        // document.documentElement.classList.forEach((className) => {
+        //   if (className.startsWith('theme-')) {
+        //     document.documentElement.classList.remove(className)
+        //   }
+        // })
+        // document.documentElement.classList.add(`theme-${value}`)
 
         if (value === 'default') {
-          navigate({ to: '.', search: { theme: undefined } })
+          navigate({
+            to: '.',
+            search: (prev) => ({ ...prev, theme: undefined }),
+          })
         } else {
-          navigate({ to: '.', search: { theme: value } })
+          navigate({
+            to: '.',
+            search: (prev) => ({ ...prev, theme: value }),
+          })
         }
       }}
     >
