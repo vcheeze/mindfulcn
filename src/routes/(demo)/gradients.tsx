@@ -1,6 +1,13 @@
+import { PaintRollerIcon } from '@phosphor-icons/react'
 import { createFileRoute, useRouterState } from '@tanstack/react-router'
 import { AnimatePresence, motion } from 'motion/react'
-
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '@/components/ui/empty'
 import { themes } from '@/lib/themes'
 
 export const Route = createFileRoute('/(demo)/gradients')({
@@ -9,8 +16,25 @@ export const Route = createFileRoute('/(demo)/gradients')({
 
 function RouteComponent() {
   const routerState = useRouterState()
-  const themeId = routerState.location.search.theme ?? themes[0].id
-  const theme = themes.find((t) => t.id === themeId) || themes[0]
+  const themeId = routerState.location.search.theme
+  const theme = themes.find((t) => t.id === themeId)
+
+  if (!theme) {
+    return (
+      <Empty className="mt-60">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <PaintRollerIcon />
+          </EmptyMedia>
+          <EmptyTitle>No Theme Selected</EmptyTitle>
+          <EmptyDescription>
+            You haven&apos;t selected a theme yet. Get started by selecting one
+            from the top right corner.
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    )
+  }
 
   return (
     <div className="container mx-auto p-8 flex items-center justify-center gap-4 h-[calc(100vh-65px)] max-sm:flex-col">
