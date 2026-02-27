@@ -77,7 +77,10 @@ export function HowItWorks() {
                   })
                   document.documentElement.classList.add(`theme-${value}`)
 
-                  navigate({ to: '.', search: { theme: value } })
+                  navigate({
+                    to: '.',
+                    search: (prev) => ({ ...prev, theme: value }),
+                  })
                 }}
               >
                 {themes.slice(1, 4).map((theme) => (
