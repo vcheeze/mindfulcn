@@ -1,8 +1,11 @@
 import { ArrowRightIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
+import { useSidebar } from '@/components/ui/sidebar'
 
 export function Hero() {
+  const { toggleSidebar } = useSidebar()
+
   return (
     <main className="my-8">
       <section className="overflow-hidden">
@@ -34,10 +37,14 @@ export function Hero() {
               </p>
 
               <div className="mt-12 flex flex-wrap gap-4">
-                <Button render={<Link to="/" />} size="lg">
+                <Button onClick={toggleSidebar} size="lg">
                   Browse Themes
                 </Button>
-                <Button render={<Link to="/" />} size="lg" variant="outline">
+                <Button
+                  render={<Link to="/" hash="how-it-works" />}
+                  size="lg"
+                  variant="outline"
+                >
                   See How It Works
                 </Button>
               </div>

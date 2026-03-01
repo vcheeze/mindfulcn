@@ -16,7 +16,7 @@ export function HowItWorks() {
   const navigate = useNavigate()
 
   return (
-    <section className="py-16 md:py-32">
+    <section className="py-16 md:py-32" id="how-it-works">
       <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
         <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl">
           Stop spending hours tweaking colors.

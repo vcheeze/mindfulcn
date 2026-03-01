@@ -1,6 +1,7 @@
 import {
   CheckCircleIcon,
   CoinsIcon,
+  PaintRollerIcon,
   PaletteIcon,
   SlidersIcon,
   UserCircleIcon,
@@ -24,34 +25,41 @@ type FAQItem = {
 export function FAQs() {
   const faqItems: FAQItem[] = [
     {
-      id: 'item-1',
+      id: 'mindfulcn',
+      icon: <PaintRollerIcon className="m-auto size-4" />,
+      question: 'What is mindfulcm?',
+      answer:
+        "mindfulcn is a curated showcase of shadcn themes built with Alex Cristache's mindful palettes. It helps you preview and export themes without the guesswork.",
+    },
+    {
+      id: 'mindful-palettes',
       icon: <PaletteIcon className="m-auto size-4" />,
       question: 'What are mindful palettes?',
       answer:
         "Mindful palettes are color systems created by Alex Cristache that emphasize harmony, accessibility, and intentional design. They're built to work across light and dark modes with consistent semantics.",
     },
     {
-      id: 'item-2',
+      id: 'tweakcn',
       icon: <SlidersIcon className="m-auto size-4" />,
       question: "What's tweakcn?",
       answer:
         'tweakcn is a tool for customizing shadcn themes. Our themes export directly in tweakcn format so you can make further adjustments without reformatting.',
     },
     {
-      id: 'item-3',
+      id: 'account',
       icon: <UserCircleIcon className="m-auto size-4" />,
       question: 'Do I need an account?',
       answer: 'Nope. Browse, preview, and copy themes instantly.',
     },
     {
-      id: 'item-4',
+      id: 'usage',
       icon: <CheckCircleIcon className="m-auto size-4" />,
       question: 'Can I use these themes in production?',
       answer:
         'Yes! These themes are free to use in personal and commercial projects.',
     },
     {
-      id: 'item-5',
+      id: 'pricing',
       icon: <CoinsIcon className="m-auto size-4" />,
       question: 'Will this always be free?',
       answer:

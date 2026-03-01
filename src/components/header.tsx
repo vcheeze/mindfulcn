@@ -3,14 +3,12 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { CopyDialog } from '@/components/copy-dialog'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
+import { useSidebar } from '@/components/ui/sidebar'
 import { themes } from '@/lib/themes'
 
-type HeaderProps = {
-  onSelectTheme?: () => void
-}
-
-export function Header({ onSelectTheme }: HeaderProps) {
+export function Header() {
   const routerState = useRouterState()
+  const { toggleSidebar } = useSidebar()
 
   const demoPages = [
     { name: 'Dashboard', path: '/dashboard' },
@@ -40,7 +38,7 @@ export function Header({ onSelectTheme }: HeaderProps) {
       <div className="flex items-center gap-2">
         <CopyDialog />
         <ModeToggle />
-        <Button variant="outline" onClick={onSelectTheme}>
+        <Button variant="outline" onClick={toggleSidebar}>
           <div className="flex -gap-1">
             {['bg-primary', 'bg-secondary', 'bg-accent', 'bg-muted'].map(
               (item) => (

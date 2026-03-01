@@ -6,10 +6,9 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { useState } from 'react'
 import z from 'zod'
+
 import { Header } from '@/components/header'
-import { ModeProvider, useTheme } from '@/components/mode-provider'
 import { ThemeSelector } from '@/components/theme-selector'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import {
@@ -65,11 +64,6 @@ export const Route = createRootRoute({
 function RootDocument({ children }: { children: React.ReactNode }) {
   const { themeClass, modeClass } = Route.useLoaderData()
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const toggleSidebar = () => {
-    setIsSidebarOpen((prev) => !prev)
-  }
-
   return (
     // TODO adding themeClass like this right now removes the `dark` class from html when using `navigate` function. How do I preserve this?
     <html
@@ -81,10 +75,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <TooltipProvider>
-          <SidebarProvider open={isSidebarOpen}>
+          <SidebarProvider defaultOpen={false}>
             <SidebarInset>
               <ScrollArea className="h-screen">
-                <Header onSelectTheme={toggleSidebar} />
+                <Header />
                 <main>{children}</main>
               </ScrollArea>
             </SidebarInset>
