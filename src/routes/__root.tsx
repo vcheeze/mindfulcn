@@ -36,7 +36,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'mindfulcn',
+      },
+      {
+        name: 'description',
+        content:
+          'A collection of mindful, curated, and tweakcn-ready themes for your next project. Explore our handpicked selection of themes, designed to inspire and elevate your creative work. Whether you are a developer, designer, or simply looking for beautiful themes, mindfulcn has something for everyone.',
       },
     ],
     links: [

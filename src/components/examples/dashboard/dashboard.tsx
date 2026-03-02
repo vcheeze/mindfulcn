@@ -23,7 +23,7 @@ export function Dashboard() {
                 <ChartAreaInteractive />
               </div>
               <DataTable data={data} />
-              <div className="flex gap-4 px-4 lg:px-6">
+              <div className="flex flex-col md:flex-row gap-4 px-4 lg:px-6">
                 <div className="basis-1/2">
                   <ChartPieDonut />
                 </div>
