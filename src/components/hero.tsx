@@ -36,7 +36,7 @@ export function Hero() {
                 palettes — ready for tweakcn.
               </p>
 
-              <div className="mt-12 flex flex-wrap gap-4">
+              <div className="mt-12 flex flex-wrap gap-4 justify-center lg:justify-start">
                 <Button onClick={toggleSidebar} size="lg">
                   Browse Themes
                 </Button>
@@ -50,7 +50,7 @@ export function Hero() {
               </div>
 
               <div className="my-8 lg:my-12">
-                <ul className="list-inside list-disc space-y-2">
+                <ul className="list-inside lg:list-disc space-y-2">
                   <li>mindful</li>
                   <li>curated</li>
                   <li>tweakcn-ready</li>
