@@ -27,7 +27,7 @@ export function FAQs() {
     {
       id: 'mindfulcn',
       icon: <PaintRollerIcon className="m-auto size-4" />,
-      question: 'What is mindfulcm?',
+      question: 'What is mindfulcn?',
       answer:
         "mindfulcn is a curated showcase of shadcn themes built with Alex Cristache's mindful palettes. It helps you preview and export themes without the guesswork.",
     },
