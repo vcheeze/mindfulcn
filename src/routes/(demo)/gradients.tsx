@@ -8,9 +8,19 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from '@/components/ui/empty'
+import { pageHead } from '@/lib/seo'
+import { routes } from '@/lib/site'
 import { themes } from '@/lib/themes'
 
+const page = routes.find((route) => route.path === '/gradients')!
+
 export const Route = createFileRoute('/(demo)/gradients')({
+  head: () =>
+    pageHead({
+      title: page.title,
+      description: page.description,
+      path: '/gradients',
+    }),
   component: RouteComponent,
 })
 
@@ -22,6 +32,7 @@ function RouteComponent() {
   if (!theme) {
     return (
       <Empty className="mt-60">
+        <h1 className="sr-only">{page.title}</h1>
         <EmptyHeader>
           <EmptyMedia variant="icon">
             <PaintRollerIcon />
@@ -38,6 +49,9 @@ function RouteComponent() {
 
   return (
     <div className="container mx-auto p-8 flex items-center justify-center gap-4 h-[calc(100vh-65px)] max-sm:flex-col">
+      <h1 className="sr-only">
+        Gradient swatches for the {theme.name} mindfulcn theme
+      </h1>
       <svg width="0" height="0">
         <title>Grain Filter</title>
         <filter id="grain">

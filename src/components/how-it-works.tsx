@@ -16,9 +16,16 @@ export function HowItWorks() {
   const navigate = useNavigate()
 
   return (
-    <section className="py-16 md:py-32" id="how-it-works">
+    <section
+      className="py-16 md:py-32"
+      id="how-it-works"
+      aria-labelledby="how-it-works-heading"
+    >
       <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
-        <h2 className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl">
+        <h2
+          id="how-it-works-heading"
+          className="relative z-10 max-w-xl text-4xl font-medium lg:text-5xl"
+        >
           Stop spending hours tweaking colors.
         </h2>
         <div className="relative">
@@ -27,8 +34,14 @@ export function HowItWorks() {
               Start with themes designed for clarity, accessibility, and beauty.
             </p>
             <p>
-              Every theme uses Alex Cristache's mindful palettes — color systems
-              designed for harmony and readability, not just aesthetics.
+              Every theme uses Alex Cristache&apos;s mindful palettes — color
+              systems designed for harmony and readability, not just aesthetics.
+              The current library includes{' '}
+              {themes
+                .map((theme) => theme.name)
+                .join(', ')
+                .replace(/, ([^,]+)$/, ', and $1')}
+              .
             </p>
 
             <div className="grid grid-cols-2 gap-3 pt-6 sm:gap-4">

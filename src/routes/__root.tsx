@@ -1,14 +1,16 @@
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import {
-  createRootRoute,
   HeadContent,
-  retainSearchParams,
   Scripts,
+  createRootRoute,
+  retainSearchParams,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import z from 'zod'
 
+import appCss from '../styles.css?url'
 import { Header } from '@/components/header'
+import { ThemeBranding } from '@/components/theme-branding'
 import { ThemeSelector } from '@/components/theme-selector'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import {
@@ -19,10 +21,12 @@ import {
   SidebarProvider,
 } from '@/components/ui/sidebar'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import appCss from '../styles.css?url'
+import { jsonLdScript, websiteJsonLd } from '@/lib/seo'
+import { site } from '@/lib/site'
 
 const appSearchSchema = z.object({
-  theme: z.string().optional(), // TODO this only allows ?theme="231", can we allow z.number() too so ?theme=231 works?
+  theme: z.coerce.string().optional(),
+  mode: z.enum(['light', 'dark']).optional(),
 })
 
 export const Route = createRootRoute({
@@ -36,12 +40,20 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'mindfulcn',
+        title: site.title,
       },
       {
         name: 'description',
-        content:
-          'A collection of mindful, curated, and tweakcn-ready themes for your next project. Explore our handpicked selection of themes, designed to inspire and elevate your creative work. Whether you are a developer, designer, or simply looking for beautiful themes, mindfulcn has something for everyone.',
+        content: site.description,
+      },
+      {
+        name: 'theme-color',
+        content: '#ffffff',
+        'data-theme-color': '',
+      },
+      {
+        name: 'color-scheme',
+        content: 'light dark',
       },
     ],
     links: [
@@ -49,7 +61,26 @@ export const Route = createRootRoute({
         rel: 'stylesheet',
         href: appCss,
       },
+      {
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/mindfulcn-logo.svg',
+        'data-theme-favicon': '',
+      },
+      {
+        rel: 'apple-touch-icon',
+        href: '/logo192.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
+      },
+      {
+        rel: 'author',
+        href: site.author.url,
+      },
     ],
+    scripts: [jsonLdScript(websiteJsonLd())],
   }),
 
   shellComponent: RootDocument,
@@ -57,17 +88,12 @@ export const Route = createRootRoute({
   search: {
     middlewares: [retainSearchParams(['theme'])],
   },
-  loader: async ({ location }) => {
-    const { theme, mode } = location.search as { theme?: string; mode?: string } // TODO how to get the proper type here?
-    return {
-      themeClass: theme ? `theme-${theme}` : 'theme-default',
-      modeClass: mode ?? 'light',
-    }
-  },
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { themeClass, modeClass } = Route.useLoaderData()
+  const { theme, mode } = Route.useSearch()
+  const themeClass = theme ? `theme-${theme}` : 'theme-default'
+  const modeClass = mode ?? 'light'
 
   return (
     // TODO adding themeClass like this right now removes the `dark` class from html when using `navigate` function. How do I preserve this?
@@ -79,12 +105,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <ThemeBranding theme={theme} mode={mode} />
+        <a
+          href="#main-content"
+          className="bg-background text-foreground sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2"
+        >
+          Skip to content
+        </a>
         <TooltipProvider>
           <SidebarProvider defaultOpen={false}>
             <SidebarInset>
               <ScrollArea className="h-screen">
                 <Header />
-                <main>{children}</main>
+                <main id="main-content">{children}</main>
               </ScrollArea>
             </SidebarInset>
             <Sidebar side="right">

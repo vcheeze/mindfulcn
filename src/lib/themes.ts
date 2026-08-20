@@ -1,4 +1,4 @@
-type Theme = {
+export type Theme = {
   id: string
   name: string
   description: string
@@ -86,6 +86,20 @@ export const themes: Array<Theme> = [
       'from-[#b2a69a] to-[#1b8188]',
       'from-[#b8e100] via-[#1b8188] to-[#1c3b42] via-80%',
       'from-[#1b8188] to-[#1c3b42]',
+    ],
+  },
+  {
+    id: '280',
+    name: 'still meadow',
+    description:
+      'Built for brands that value calm, authenticity, and a slower pace. Well suited to wellness, nature, and mindful living.',
+    colors: ['#f0eeeb', '#eedac9', '#99c1cc', '#c2d3af', '#3a5f49', '#103222'],
+    gradients: [
+      'from-[#f0eeeb] to-[#eedac9]',
+      'from-[#eedac9] to-[#99c1cc]',
+      'from-[#c2d3af] to-[#99c1cc]',
+      'bg-[linear-gradient(100deg,#eedac9,#c2d3af_25%,#3a5f49_80%,#103222)]! lg:bg-[linear-gradient(190deg,#eedac9,#c2d3af_25%,#3a5f49_80%,#103222)]!',
+      'from-[#3a5f49] to-[#103222]',
     ],
   },
 ]

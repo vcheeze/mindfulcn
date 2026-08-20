@@ -12,6 +12,7 @@
 @import "./themes/218.css";
 @import "./themes/223.css";
 @import "./themes/231.css";
+@import "./themes/280.css";
 
 @custom-variant dark (&:is(.dark *));
 

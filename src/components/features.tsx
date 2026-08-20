@@ -1,16 +1,19 @@
 import {
   BracketsCurlyIcon,
-  EyedropperSampleIcon,
   EyeIcon,
+  EyedropperSampleIcon,
   PiggyBankIcon,
 } from '@phosphor-icons/react'
 
 export function Features() {
   return (
-    <section className="overflow-hidden py-16 md:py-32">
+    <section
+      className="overflow-hidden py-16 md:py-32"
+      aria-labelledby="features-heading"
+    >
       <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-12">
         <div className="relative z-10 max-w-2xl">
-          <h2 className="text-4xl lg:text-5xl">
+          <h2 id="features-heading" className="text-4xl lg:text-5xl">
             Built for the shadcn Ecosystem
           </h2>
           <p className="mt-6 text-lg">

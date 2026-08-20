@@ -1,0 +1,59 @@
+{
+  "name": "mindfulcn",
+  "description": "Free, curated shadcn/ui themes built from Alex Cristache's mindful palettes. Preview in light and dark mode, then copy tweakcn-ready CSS.",
+  "url": "https://mindfulcn.vercel.app",
+  "price": 0,
+  "accountRequired": false,
+  "compatibleWith": ["shadcn/ui", "tweakcn", "Tailwind CSS"],
+  "themes": [
+    {
+      "id": "083",
+      "name": "rustic forest",
+      "description": "Blending soft creams, warm accents and deep forest greens in a cozy, rustic, nature inspired palette.",
+      "colors": ["#fbf5f0", "#f2e3d8", "#db783e", "#aa423a", "#024a43", "#142d25"],
+      "url": "https://mindfulcn.vercel.app/?theme=083"
+    },
+    {
+      "id": "095",
+      "name": "midnight cove",
+      "description": "Soft pastels, deep blue-greens in a sophisticated palette fit for coastal resorts, luxury spas, or organic skincare products.",
+      "colors": ["#f1f3f9", "#f1b393", "#dbd0a8", "#469ba7", "#005765", "#012731"],
+      "url": "https://mindfulcn.vercel.app/?theme=095"
+    },
+    {
+      "id": "187",
+      "name": "blush at dusk",
+      "description": "Brings together blush tones, aquatic vibes, and a deep twilight blue. Perfect for emotionally driven design, like beauty and personal care.",
+      "colors": ["#f6f2f1", "#ede2e0", "#f8c0ba", "#e94e6d", "#327a88", "#0f084b"],
+      "url": "https://mindfulcn.vercel.app/?theme=187"
+    },
+    {
+      "id": "218",
+      "name": "anchored ember",
+      "description": "Contrasts warm, light tones with cool, grounding tones in a modern, vibrant and engaging palette.",
+      "colors": ["#f4f5fa", "#dacfba", "#ffc100", "#3d9973", "#192961", "#111122"],
+      "url": "https://mindfulcn.vercel.app/?theme=218"
+    },
+    {
+      "id": "223",
+      "name": "indigo atelier",
+      "description": "Pairs soft, warm tones evoking handcrafting with deep navy anchors for a grounded look with a human touch. Great for artisanal and boutique brands.",
+      "colors": ["#ebebe9", "#dec0ad", "#e8a784", "#9d4542", "#114a6b", "#001b2e"],
+      "url": "https://mindfulcn.vercel.app/?theme=223"
+    },
+    {
+      "id": "231",
+      "name": "electric tide",
+      "description": "Modern palette that blends soft off-white and warm neutrals with vibrant lime, cool ocean tones, and deep teals. A high-contrast aquatic-inspired selection.",
+      "colors": ["#f7f5ec", "#b8e100", "#b2a69a", "#1b8188", "#1c3b42", "#0f1519"],
+      "url": "https://mindfulcn.vercel.app/?theme=231"
+    },
+    {
+      "id": "280",
+      "name": "still meadow",
+      "description": "Built for brands that value calm, authenticity, and a slower pace. Well suited to wellness, nature, and mindful living.",
+      "colors": ["#f0eeeb", "#eedac9", "#99c1cc", "#c2d3af", "#3a5f49", "#103222"],
+      "url": "https://mindfulcn.vercel.app/?theme=280"
+    }
+  ]
+}

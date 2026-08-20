@@ -1,0 +1,36 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 32 32"
+  fill="none"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">mindfulcn</title>
+  <desc id="desc">A minimal two-tone geometric lowercase m</desc>
+  <style>
+    .background { fill: #fff; }
+    .foreground { stroke: #171717; }
+    .primary { stroke: #737373; }
+
+    @media (prefers-color-scheme: dark) {
+      .background { fill: #171717; }
+      .foreground { stroke: #fafafa; }
+      .primary { stroke: #a3a3a3; }
+    }
+  </style>
+  <rect width="32" height="32" rx="7" class="background" />
+  <path
+    d="M5 25V12a5 5 0 0 1 10 0v13"
+    class="foreground"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M15 25V12a5 5 0 0 1 10 0v13"
+    class="primary"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

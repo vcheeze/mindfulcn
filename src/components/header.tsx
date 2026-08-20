@@ -1,5 +1,7 @@
 import { ListIcon } from '@phosphor-icons/react'
 import { Link, useRouterState } from '@tanstack/react-router'
+
+import { BrandLogo } from '@/components/brand-logo'
 import { CopyDialog } from '@/components/copy-dialog'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
@@ -18,14 +20,15 @@ export function Header() {
   const routerState = useRouterState()
   const { toggleSidebar } = useSidebar()
 
-  const demoPages = [
+  const navPages = [
+    { name: 'About', path: '/about' },
     { name: 'Dashboard', path: '/dashboard' },
     { name: 'Components', path: '/components' },
     { name: 'Gradients', path: '/gradients' },
-  ]
+  ] as const
 
   return (
-    <nav>
+    <header>
       <div className="flex items-center justify-between py-4 px-6 border-b max-sm:hidden">
         <Link
           to="/"
@@ -33,10 +36,10 @@ export function Header() {
           search={(prev) => prev}
           viewTransition
         >
-          mindfulcn
+          <BrandLogo />
         </Link>
-        <div className="flex items-center gap-1">
-          {demoPages.map((page) => (
+        <nav className="flex items-center gap-1" aria-label="Primary">
+          {navPages.map((page) => (
             <Button
               key={page.path}
               variant="link"
@@ -48,7 +51,7 @@ export function Header() {
               {page.name}
             </Button>
           ))}
-        </div>
+        </nav>
         <div className="flex items-center gap-2">
           <CopyDialog />
           <ModeToggle />
@@ -89,21 +92,17 @@ export function Header() {
                   search={(prev) => prev}
                   viewTransition
                 >
-                  mindfulcn
+                  <BrandLogo markClassName="size-5" />
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2"></DropdownMenuItem>
               <DropdownMenuGroup>
-                <DropdownMenuLabel>Demo Pages</DropdownMenuLabel>
-                <DropdownMenuItem>
-                  <Link to="/dashboard">Dashboard</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/components">Components</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/gradients">Gradients</Link>
-                </DropdownMenuItem>
+                <DropdownMenuLabel>Pages</DropdownMenuLabel>
+                {navPages.map((page) => (
+                  <DropdownMenuItem key={page.path}>
+                    <Link to={page.path}>{page.name}</Link>
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -129,6 +128,6 @@ export function Header() {
             : 'Select Theme'}
         </Button>
       </div>
-    </nav>
+    </header>
   )
 }

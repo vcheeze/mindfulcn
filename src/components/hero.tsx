@@ -7,8 +7,8 @@ export function Hero() {
   const { toggleSidebar } = useSidebar()
 
   return (
-    <main className="my-8">
-      <section className="overflow-hidden">
+    <section className="my-8" aria-labelledby="hero-heading">
+      <div className="overflow-hidden">
         <div className="relative mx-auto max-w-5xl px-6 py-28 lg:py-20">
           <div className="lg:flex lg:items-center lg:gap-12">
             <div className="relative z-10 mx-auto max-w-xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
@@ -26,14 +26,17 @@ export function Hero() {
                 <ArrowRightIcon className="size-4" />
               </Link>
 
-              <h1 className="mt-10 text-balance text-4xl font-bold md:text-5xl xl:text-5xl">
+              <h1
+                id="hero-heading"
+                className="mt-10 text-balance text-4xl font-bold md:text-5xl xl:text-5xl"
+              >
                 Mindful <span className="font-sans font-normal">shadcn/ui</span>{' '}
                 Themes
               </h1>
               <p className="mt-8">
-                Curated color palettes meet shadcn's design system. Preview,
-                compare, and copy themes built with Alex Cristache's mindful
-                palettes — ready for tweakcn.
+                mindfulcn is a free gallery of curated shadcn/ui themes built
+                from Alex Cristache&apos;s mindful palettes. Preview, compare,
+                and copy tweakcn-ready CSS — no account required.
               </p>
 
               <div className="mt-12 flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -51,9 +54,9 @@ export function Hero() {
 
               <div className="my-8 lg:my-12">
                 <ul className="list-inside lg:list-disc space-y-2">
-                  <li>mindful</li>
-                  <li>curated</li>
-                  <li>tweakcn-ready</li>
+                  <li>Seven mindful palettes, ready as shadcn/ui themes</li>
+                  <li>Live preview in light and dark mode</li>
+                  <li>One-click copy in tweakcn format</li>
                 </ul>
               </div>
             </div>
@@ -64,17 +67,17 @@ export function Hero() {
               <img
                 className="hidden dark:block"
                 src="https://pbs.twimg.com/media/HBotuMzWEAA21gJ?format=jpg&name=4096x4096"
-                alt="app illustration"
+                alt="Dark-mode dashboard preview of a mindfulcn shadcn/ui theme"
               />
               <img
                 className="dark:hidden"
                 src="https://pbs.twimg.com/media/G8xaoWhWAAADyzA?format=png&name=medium"
-                alt="app illustration"
+                alt="Light-mode dashboard preview of a mindfulcn shadcn/ui theme"
               />
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   )
 }
