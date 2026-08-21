@@ -61,7 +61,7 @@ export const CopyDialog = () => {
       >
         <CopyIcon />
       </DialogTrigger>
-      <DialogContent className="max-w-2xl!">
+      <DialogContent className="max-w-2xl! font-mono">
         <DialogHeader>
           <DialogTitle>Styles</DialogTitle>
           <DialogDescription>

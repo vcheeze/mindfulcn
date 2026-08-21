@@ -34,7 +34,7 @@ export function FAQs() {
         <div className="flex flex-col gap-10 md:flex-row md:gap-16">
           <div className="md:w-1/3">
             <div className="sticky top-20">
-              <h2 id="faq-heading" className="mt-4 text-3xl font-bold">
+              <h2 id="faq-heading" className="mt-4 text-3xl font-semibold">
                 Frequently Asked Questions
               </h2>
               <p className="text-muted-foreground mt-4">

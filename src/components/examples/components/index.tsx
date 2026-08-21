@@ -1,5 +1,5 @@
-import { RootComponents } from './components'
+import { Cards } from '@/components/examples/cards'
 
 export function Components() {
-  return <RootComponents />
+  return <Cards />
 }

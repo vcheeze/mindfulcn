@@ -4,6 +4,7 @@ import {
   Scripts,
   createRootRoute,
   retainSearchParams,
+  useRouterState,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import z from 'zod'
@@ -23,6 +24,7 @@ import {
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { jsonLdScript, websiteJsonLd } from '@/lib/seo'
 import { site } from '@/lib/site'
+import { cn } from '@/lib/utils'
 
 const appSearchSchema = z.object({
   theme: z.coerce.string().optional(),
@@ -92,6 +94,10 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const { theme, mode } = Route.useSearch()
+  const isDemo = useRouterState({
+    select: (state) =>
+      state.matches.some((match) => match.routeId.startsWith('/(demo)')),
+  })
   const themeClass = theme ? `theme-${theme}` : 'theme-default'
   const modeClass = mode ?? 'light'
 
@@ -99,7 +105,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     // TODO adding themeClass like this right now removes the `dark` class from html when using `navigate` function. How do I preserve this?
     <html
       lang="en"
-      className={`font-mono transition-colors ${themeClass} ${modeClass}`}
+      className={cn(
+        'transition-colors',
+        isDemo ? 'demo font-sans' : 'font-mono',
+        themeClass,
+        modeClass,
+      )}
     >
       <head>
         <HeadContent />
@@ -108,7 +119,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <ThemeBranding theme={theme} mode={mode} />
         <a
           href="#main-content"
-          className="bg-background text-foreground sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2"
+          className="bg-background text-foreground font-mono sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2"
         >
           Skip to content
         </a>
@@ -120,7 +131,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <main id="main-content">{children}</main>
               </ScrollArea>
             </SidebarInset>
-            <Sidebar side="right">
+            <Sidebar side="right" className="font-mono tracking-tight">
               <SidebarHeader>
                 <div className="px-2 pt-2">Select Theme</div>
               </SidebarHeader>

@@ -8,27 +8,50 @@ import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useSidebar } from '@/components/ui/sidebar'
+import { brandNav, demoNav } from '@/lib/site'
 import { themes } from '@/lib/themes'
+import { cn } from '@/lib/utils'
+
+const headerNav = [...brandNav, ...demoNav]
+
+function NavLabel({
+  children,
+  active,
+}: {
+  children: string
+  active: boolean
+}) {
+  return (
+    <span className="grid">
+      <span
+        className="invisible col-start-1 row-start-1 font-semibold"
+        aria-hidden="true"
+      >
+        {children}
+      </span>
+      <span
+        className={cn(
+          'col-start-1 row-start-1 font-normal',
+          active && 'font-semibold',
+        )}
+      >
+        {children}
+      </span>
+    </span>
+  )
+}
 
 export function Header() {
   const routerState = useRouterState()
   const { toggleSidebar } = useSidebar()
-
-  const navPages = [
-    { name: 'About', path: '/about' },
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Components', path: '/components' },
-    { name: 'Gradients', path: '/gradients' },
-  ] as const
+  const pathname = routerState.location.pathname
 
   return (
-    <header>
+    <header className="font-mono tracking-tight">
       <div className="flex items-center justify-between py-4 px-6 border-b max-sm:hidden">
         <Link
           to="/"
@@ -39,18 +62,23 @@ export function Header() {
           <BrandLogo />
         </Link>
         <nav className="flex items-center gap-1" aria-label="Primary">
-          {navPages.map((page) => (
-            <Button
-              key={page.path}
-              variant="link"
-              render={
-                <Link to={page.path} search={(prev) => prev} viewTransition />
-              }
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              {page.name}
-            </Button>
-          ))}
+          {headerNav.map((page) => {
+            const isActive = pathname === page.path
+
+            return (
+              <Button
+                key={page.path}
+                variant="link"
+                render={
+                  <Link to={page.path} search={(prev) => prev} viewTransition />
+                }
+                aria-current={isActive ? 'page' : undefined}
+                className="font-normal text-foreground hover:text-primary transition-colors"
+              >
+                <NavLabel active={isActive}>{page.name}</NavLabel>
+              </Button>
+            )
+          })}
         </nav>
         <div className="flex items-center gap-2">
           <CopyDialog />
@@ -84,26 +112,33 @@ export function Header() {
                 </Button>
               }
             />
-            <DropdownMenuContent className="w-40">
-              <DropdownMenuItem>
-                <Link
-                  to="/"
-                  className="font-mono"
-                  search={(prev) => prev}
-                  viewTransition
-                >
-                  <BrandLogo markClassName="size-5" />
-                </Link>
+            <DropdownMenuContent className="w-40 font-mono">
+              <DropdownMenuItem
+                render={
+                  <Link to="/" search={(prev) => prev} viewTransition />
+                }
+              >
+                <BrandLogo markClassName="size-5" />
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2"></DropdownMenuItem>
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>Pages</DropdownMenuLabel>
-                {navPages.map((page) => (
-                  <DropdownMenuItem key={page.path}>
-                    <Link to={page.path}>{page.name}</Link>
+              {headerNav.map((page) => {
+                const isActive = pathname === page.path
+
+                return (
+                  <DropdownMenuItem
+                    key={page.path}
+                    render={
+                      <Link
+                        to={page.path}
+                        search={(prev) => prev}
+                        viewTransition
+                      />
+                    }
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <NavLabel active={isActive}>{page.name}</NavLabel>
                   </DropdownMenuItem>
-                ))}
-              </DropdownMenuGroup>
+                )
+              })}
             </DropdownMenuContent>
           </DropdownMenu>
           <ModeToggle />

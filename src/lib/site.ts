@@ -56,10 +56,26 @@ export const routes = [
     priority: '0.6',
   },
   {
+    path: '/application',
+    title: 'Application preview',
+    description:
+      'Preview mindfulcn shadcn/ui themes on a live application with tickers, charts, transactions, activity, and messaging.',
+    changefreq: 'monthly',
+    priority: '0.6',
+  },
+  {
+    path: '/marketing',
+    title: 'Marketing preview',
+    description:
+      'Preview mindfulcn shadcn/ui themes on a live marketing site with hero, pricing, testimonials, and FAQ in light and dark mode.',
+    changefreq: 'monthly',
+    priority: '0.6',
+  },
+  {
     path: '/components',
     title: 'Component gallery',
     description:
-      'See mindfulcn themes applied to real shadcn/ui components — buttons, forms, cards, inputs, and more.',
+      'Preview mindfulcn shadcn/ui themes on a live card gallery — forms, charts, tables, chat, and more in light and dark mode.',
     changefreq: 'monthly',
     priority: '0.6',
   },
@@ -74,3 +90,13 @@ export const routes = [
 ] as const
 
 export type SitePath = (typeof routes)[number]['path']
+
+export const brandNav = [{ name: 'About', path: '/about' }] as const
+
+export const demoNav = [
+  { name: 'Dashboard', path: '/dashboard' },
+  { name: 'Application', path: '/application' },
+  { name: 'Marketing', path: '/marketing' },
+  { name: 'Components', path: '/components' },
+  { name: 'Gradients', path: '/gradients' },
+] as const

@@ -17,9 +17,9 @@ export const Route = createFileRoute('/(demo)/components')({
 
 function RouteComponent() {
   return (
-    <div className="p-4">
+    <>
       <h1 className="sr-only">{page.title} with mindfulcn themes</h1>
       <Components />
-    </div>
+    </>
   )
 }

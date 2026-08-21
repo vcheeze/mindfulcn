@@ -15,7 +15,7 @@ export const faqs: Array<FaqItem> = [
     id: 'how-to-use',
     question: 'How do I use a mindfulcn theme?',
     answer:
-      'Open the theme sidebar, choose a palette, and preview it on the dashboard, component gallery, and gradient pages. Copy the CSS in one click, then paste it into your project or import it in tweakcn to customize further.',
+      'Open the theme sidebar, choose a palette, and preview it on the dashboard, application, marketing, component gallery, and gradient pages. Copy the CSS in one click, then paste it into your project or import it in tweakcn to customize further.',
   },
   {
     id: 'mindful-palettes',

@@ -2,8 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
-@import "@fontsource/ia-writer-mono/400.css";
-@import "@fontsource/ia-writer-mono/700.css";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource/ia-writer-mono";
 
 /* themes */
 @import "./themes/083.css";
@@ -13,6 +13,7 @@
 @import "./themes/223.css";
 @import "./themes/231.css";
 @import "./themes/280.css";
+@import "./themes/282.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -82,7 +83,7 @@
 
 @theme inline {
   --font-sans: 'Geist Variable', sans-serif;
-  --font-mono: 'iA Writer Mono', monospace;
+  --font-mono: 'Geist Mono Variable', monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -132,5 +133,9 @@
   }
   html {
     @apply font-mono;
+  }
+  html.demo,
+  html.demo body {
+    @apply font-sans tracking-normal;
   }
 }

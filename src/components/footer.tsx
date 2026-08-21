@@ -2,7 +2,7 @@ import { GithubLogoIcon, XIcon, XLogoIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 
 import { BrandLogo } from '@/components/brand-logo'
-import { site } from '@/lib/site'
+import { brandNav, demoNav, site } from '@/lib/site'
 
 export function Footer() {
   return (
@@ -29,15 +29,24 @@ export function Footer() {
           <Link to="/" className="underline hover:text-primary">
             Home
           </Link>
-          <Link to="/about" className="underline hover:text-primary">
-            About
-          </Link>
-          <Link to="/dashboard" className="underline hover:text-primary">
-            Dashboard
-          </Link>
-          <Link to="/components" className="underline hover:text-primary">
-            Components
-          </Link>
+          {brandNav.map((page) => (
+            <Link
+              key={page.path}
+              to={page.path}
+              className="underline hover:text-primary"
+            >
+              {page.name}
+            </Link>
+          ))}
+          {demoNav.map((page) => (
+            <Link
+              key={page.path}
+              to={page.path}
+              className="underline hover:text-primary"
+            >
+              {page.name}
+            </Link>
+          ))}
         </nav>
         <div className="space-y-2">
           <p className="text-center text-muted-foreground text-sm">

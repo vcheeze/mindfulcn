@@ -1,9 +1,10 @@
 import {
+  ArrowCircleUpIcon,
   CameraIcon,
   ChartBarIcon,
-  ChartLineIcon,
-  CommandIcon,
+  ClipboardTextIcon,
   DatabaseIcon,
+  FileCodeIcon,
   FileIcon,
   FileTextIcon,
   FolderIcon,
@@ -33,7 +34,7 @@ const data = {
   user: {
     name: 'shadcn',
     email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    avatar: '/examples/avatars/person-1.webp',
   },
   navMain: [
     {
@@ -96,7 +97,7 @@ const data = {
     },
     {
       title: 'Prompts',
-      icon: <FileTextIcon />,
+      icon: <FileCodeIcon />,
       url: '#',
       items: [
         {
@@ -136,7 +137,7 @@ const data = {
     {
       name: 'Reports',
       url: '#',
-      icon: <ChartLineIcon />,
+      icon: <ClipboardTextIcon />,
     },
     {
       name: 'Word Assistant',
@@ -145,6 +146,7 @@ const data = {
     },
   ],
 }
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
@@ -159,7 +161,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5!"
               render={<a href="#" />}
             >
-              <CommandIcon className="size-5!" />
+              <ArrowCircleUpIcon className="size-5!" />
               <span className="text-base font-semibold">Acme Inc.</span>
             </SidebarMenuButton>
           </SidebarMenuItem>

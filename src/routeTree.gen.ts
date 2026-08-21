@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as demoRouteRouteImport } from './routes/(demo)/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as demoApplicationRouteImport } from './routes/(demo)/application'
 import { Route as demoComponentsRouteImport } from './routes/(demo)/components'
 import { Route as demoDashboardRouteImport } from './routes/(demo)/dashboard'
 import { Route as demoGradientsRouteImport } from './routes/(demo)/gradients'
+import { Route as demoMarketingRouteImport } from './routes/(demo)/marketing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const demoRouteRoute = demoRouteRouteImport.update({
+  id: '/(demo)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -25,64 +32,96 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const demoApplicationRoute = demoApplicationRouteImport.update({
+  id: '/application',
+  path: '/application',
+  getParentRoute: () => demoRouteRoute,
+} as any)
 const demoComponentsRoute = demoComponentsRouteImport.update({
-  id: '/(demo)/components',
+  id: '/components',
   path: '/components',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => demoRouteRoute,
 } as any)
 const demoDashboardRoute = demoDashboardRouteImport.update({
-  id: '/(demo)/dashboard',
+  id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => demoRouteRoute,
 } as any)
 const demoGradientsRoute = demoGradientsRouteImport.update({
-  id: '/(demo)/gradients',
+  id: '/gradients',
   path: '/gradients',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => demoRouteRoute,
+} as any)
+const demoMarketingRoute = demoMarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
+  getParentRoute: () => demoRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/application': typeof demoApplicationRoute
   '/components': typeof demoComponentsRoute
   '/dashboard': typeof demoDashboardRoute
   '/gradients': typeof demoGradientsRoute
+  '/marketing': typeof demoMarketingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/application': typeof demoApplicationRoute
   '/components': typeof demoComponentsRoute
   '/dashboard': typeof demoDashboardRoute
   '/gradients': typeof demoGradientsRoute
+  '/marketing': typeof demoMarketingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(demo)': typeof demoRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/(demo)/application': typeof demoApplicationRoute
   '/(demo)/components': typeof demoComponentsRoute
   '/(demo)/dashboard': typeof demoDashboardRoute
   '/(demo)/gradients': typeof demoGradientsRoute
+  '/(demo)/marketing': typeof demoMarketingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/components' | '/dashboard' | '/gradients'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/application'
+    | '/components'
+    | '/dashboard'
+    | '/gradients'
+    | '/marketing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/components' | '/dashboard' | '/gradients'
+  to:
+    | '/'
+    | '/about'
+    | '/application'
+    | '/components'
+    | '/dashboard'
+    | '/gradients'
+    | '/marketing'
   id:
     | '__root__'
     | '/'
+    | '/(demo)'
     | '/about'
+    | '/(demo)/application'
     | '/(demo)/components'
     | '/(demo)/dashboard'
     | '/(demo)/gradients'
+    | '/(demo)/marketing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  demoRouteRoute: typeof demoRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
-  demoComponentsRoute: typeof demoComponentsRoute
-  demoDashboardRoute: typeof demoDashboardRoute
-  demoGradientsRoute: typeof demoGradientsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -94,6 +133,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(demo)': {
+      id: '/(demo)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof demoRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -101,36 +147,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(demo)/application': {
+      id: '/(demo)/application'
+      path: '/application'
+      fullPath: '/application'
+      preLoaderRoute: typeof demoApplicationRouteImport
+      parentRoute: typeof demoRouteRoute
+    }
     '/(demo)/components': {
       id: '/(demo)/components'
       path: '/components'
       fullPath: '/components'
       preLoaderRoute: typeof demoComponentsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof demoRouteRoute
     }
     '/(demo)/dashboard': {
       id: '/(demo)/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof demoDashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof demoRouteRoute
     }
     '/(demo)/gradients': {
       id: '/(demo)/gradients'
       path: '/gradients'
       fullPath: '/gradients'
       preLoaderRoute: typeof demoGradientsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof demoRouteRoute
+    }
+    '/(demo)/marketing': {
+      id: '/(demo)/marketing'
+      path: '/marketing'
+      fullPath: '/marketing'
+      preLoaderRoute: typeof demoMarketingRouteImport
+      parentRoute: typeof demoRouteRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+interface demoRouteRouteChildren {
+  demoApplicationRoute: typeof demoApplicationRoute
+  demoComponentsRoute: typeof demoComponentsRoute
+  demoDashboardRoute: typeof demoDashboardRoute
+  demoGradientsRoute: typeof demoGradientsRoute
+  demoMarketingRoute: typeof demoMarketingRoute
+}
+
+const demoRouteRouteChildren: demoRouteRouteChildren = {
+  demoApplicationRoute: demoApplicationRoute,
   demoComponentsRoute: demoComponentsRoute,
   demoDashboardRoute: demoDashboardRoute,
   demoGradientsRoute: demoGradientsRoute,
+  demoMarketingRoute: demoMarketingRoute,
+}
+
+const demoRouteRouteWithChildren = demoRouteRoute._addFileChildren(
+  demoRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  demoRouteRoute: demoRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -8,13 +8,13 @@ Creator: vcheeze (Peter Chen) — https://vcheeze.pages.dev — https://x.com/pe
 
 ## What it is
 
-mindfulcn is not a generic CSS theme pack. It is a curated showcase of shadcn/ui themes that you can see on real pages (dashboard, components, gradients) in both light and dark mode, then copy in one click.
+mindfulcn is not a generic CSS theme pack. It is a curated showcase of shadcn/ui themes that you can see on real pages (dashboard, application, marketing, components, gradients) in both light and dark mode, then copy in one click.
 
 ## How to use a theme
 
 1. Open https://mindfulcn.vercel.app
 2. Use the theme sidebar to pick a palette. The selection is stored in the URL as `?theme={id}`.
-3. Preview the same theme on /dashboard, /components, and /gradients.
+3. Preview the same theme on /dashboard, /application, /marketing, /components, and /gradients.
 4. Copy the CSS and paste it into a shadcn/ui project, or import it in tweakcn to keep editing.
 
 ## Theme catalog
@@ -62,7 +62,7 @@ Preview: https://mindfulcn.vercel.app/?theme=280
 mindfulcn is a free collection of curated shadcn/ui themes built from Alex Cristache's mindful palettes. It lets you preview each theme on real components in light and dark mode, then copy tweakcn-ready CSS without creating an account.
 
 ### How do I use a mindfulcn theme?
-Open the theme sidebar, choose a palette, and preview it on the dashboard, component gallery, and gradient pages. Copy the CSS in one click, then paste it into your project or import it in tweakcn to customize further.
+Open the theme sidebar, choose a palette, and preview it on the dashboard, application, marketing, component gallery, and gradient pages. Copy the CSS in one click, then paste it into your project or import it in tweakcn to customize further.
 
 ### What are mindful palettes?
 Mindful palettes are color systems by Alex Cristache that emphasize harmony, accessibility, and intentional design. They are built to work across light and dark modes with consistent semantic tokens such as background, foreground, primary, and muted.

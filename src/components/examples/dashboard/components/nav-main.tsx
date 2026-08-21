@@ -1,5 +1,4 @@
-import { EnvelopeIcon, PlusCircleIcon } from '@phosphor-icons/react'
-import { Button } from '@/components/ui/button'
+import { PlusCircleIcon } from '@phosphor-icons/react'
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -29,14 +28,6 @@ export function NavMain({
               <PlusCircleIcon />
               <span>Quick Create</span>
             </SidebarMenuButton>
-            <Button
-              size="icon"
-              className="size-8 group-data-[collapsible=icon]:opacity-0"
-              variant="outline"
-            >
-              <EnvelopeIcon />
-              <span className="sr-only">Inbox</span>
-            </Button>
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>

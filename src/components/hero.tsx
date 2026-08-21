@@ -14,13 +14,13 @@ export function Hero() {
             <div className="relative z-10 mx-auto max-w-xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
               <Link
                 to="."
-                search={{ theme: '223' }}
+                search={{ theme: '282' }}
                 className="rounded-lg mx-auto flex w-fit items-center gap-2 border p-1 pr-3 lg:ml-0"
               >
                 <span className="bg-muted rounded-[calc(var(--radius)-0.25rem)] px-2 py-1 text-xs">
                   New theme
                 </span>
-                <span className="text-sm">indigo atelier</span>
+                <span className="text-sm">citrus & tide</span>
                 <span className="bg-(--color-border) block h-4 w-px"></span>
 
                 <ArrowRightIcon className="size-4" />
@@ -28,7 +28,7 @@ export function Hero() {
 
               <h1
                 id="hero-heading"
-                className="mt-10 text-balance text-4xl font-bold md:text-5xl xl:text-5xl"
+                className="mt-10 text-balance text-4xl font-semibold md:text-5xl xl:text-5xl"
               >
                 Mindful <span className="font-sans font-normal">shadcn/ui</span>{' '}
                 Themes
@@ -54,7 +54,7 @@ export function Hero() {
 
               <div className="my-8 lg:my-12">
                 <ul className="list-inside lg:list-disc space-y-2">
-                  <li>Seven mindful palettes, ready as shadcn/ui themes</li>
+                  <li>Mindful palettes, ready as shadcn/ui themes</li>
                   <li>Live preview in light and dark mode</li>
                   <li>One-click copy in tweakcn format</li>
                 </ul>

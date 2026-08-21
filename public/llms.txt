@@ -9,6 +9,8 @@ mindfulcn helps developers skip hours of color tweaking. Every theme is designed
 - [Home](https://mindfulcn.vercel.app/): What mindfulcn is, how it works, features, and FAQs
 - [About](https://mindfulcn.vercel.app/about): Origin story, credits, and how palettes are expanded
 - [Dashboard preview](https://mindfulcn.vercel.app/dashboard): Live dashboard with charts, tables, and cards
+- [Application preview](https://mindfulcn.vercel.app/application): Live application with tickers, charts, transactions, activity, and messaging
+- [Marketing preview](https://mindfulcn.vercel.app/marketing): Live marketing site with hero, pricing, testimonials, and FAQ
 - [Component gallery](https://mindfulcn.vercel.app/components): shadcn/ui components themed in place
 - [Theme gradients](https://mindfulcn.vercel.app/gradients): Gradient swatches from the selected palette
 - [Full LLM context](https://mindfulcn.vercel.app/llms-full.txt): Complete theme catalog, FAQs, and usage notes

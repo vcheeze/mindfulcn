@@ -93,13 +93,40 @@ export const themes: Array<Theme> = [
     name: 'still meadow',
     description:
       'Built for brands that value calm, authenticity, and a slower pace. Well suited to wellness, nature, and mindful living.',
-    colors: ['#f0eeeb', '#eedac9', '#99c1cc', '#c2d3af', '#3a5f49', '#103222'],
+    colors: ['#f0f4f8', '#eedac9', '#99c1cc', '#c2d3af', '#3a5f49', '#103222'],
     gradients: [
       'from-[#f0eeeb] to-[#eedac9]',
       'from-[#eedac9] to-[#99c1cc]',
       'from-[#c2d3af] to-[#99c1cc]',
       'bg-[linear-gradient(100deg,#eedac9,#c2d3af_25%,#3a5f49_80%,#103222)]! lg:bg-[linear-gradient(190deg,#eedac9,#c2d3af_25%,#3a5f49_80%,#103222)]!',
       'from-[#3a5f49] to-[#103222]',
+    ],
+  },
+  {
+    id: '282',
+    name: 'citrus & tide',
+    description:
+      'Optimistic, vibrant, Mediterranean-inspired palette designed to celebrate color with confidence.',
+    colors: ['#f0f4f8', 'fbec5e', '#68dfbb', '#2599b2', '#225288', '#082d4f'],
+    gradients: [
+      'from-[#f0f4f8] to-[#fbec5e]',
+      'from-[#fbec5e] to-[#68dfbb]',
+      'from-[#68dfbb] to-[#2599b2]',
+      'bg-[linear-gradient(100deg,#fbec5e,#68dfbb_25%,#2599b2_80%,#225288)]! lg:bg-[linear-gradient(190deg,#fbec5e,#68dfbb_25%,#2599b2_80%,#225288)]!',
+      'from-[#225288] to-[#082d4f]',
+    ],
+  },
+  {
+    id: '293',
+    name: '',
+    description: '',
+    colors: ['#f0f4f2', '#e6c7b7', '#b4a6d5', '#b4d8d2', '#135952', '#142838'],
+    gradients: [
+      'from-[#f0f4f2] to-[#e6c7b7]',
+      'from-[#e6c7b7] to-[#b4a6d5]',
+      'from-[#e6c7b7] to-[#b4d8d2]',
+      'from-[#b4d8d2] via-[#135952] to-[#142838] via-80%',
+      'from-[#135952] to-[#142838]',
     ],
   },
 ]
